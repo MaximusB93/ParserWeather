@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Copy.cs" />
+    <Compile Include="Gorod.cs" />
+    <Compile Include="Sait.cs" />
+    <Compile Include="Region.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
