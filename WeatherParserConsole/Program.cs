@@ -12,10 +12,12 @@ namespace WeatherParserConsole
     {
         public static void Main(string[] args)
         {
-            HtmlNodeCollection NoAltElements = Sait.FuncSait();
+            
             Sait.FuncSait();
-            Region.FuncRegion(NoAltElements);
-            Gorod.FuncGorod(NoAltElements);
+            HtmlNodeCollection NoAltElements = Sait.FuncSait();
+            //Region.FuncRegion(NoAltElements);
+            HtmlNodeCollection NoAltElements2 = Region.FuncRegion(NoAltElements);
+            Gorod.FuncGorod(NoAltElements2);
 
         }
     }

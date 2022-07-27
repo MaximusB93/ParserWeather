@@ -10,7 +10,7 @@ namespace WeatherParserConsole
 {
     internal class Region
     {
-        public static void FuncRegion(HtmlNodeCollection NoAltElements)
+        public static HtmlNodeCollection FuncRegion(HtmlNodeCollection NoAltElements)
         {
             Console.WriteLine("Выберите регион");
             int IndexRegion = int.Parse(Console.ReadLine());
@@ -38,7 +38,7 @@ namespace WeatherParserConsole
                     string outputText = HN.InnerText;
                     Console.WriteLine($"{i}){outputText}\n");
                 }
-
+            return NoAltElements;
 
         }
     }
