@@ -10,46 +10,39 @@ namespace WeatherParserConsole
 {
     internal class GettingHTMLFromAWebsite
     {
-        public static HtmlNodeCollection FuncSait(HtmlWeb web, HtmlNodeCollection NoAltElements)
+        /// <summary>
+        /// Получение регионов с сайта
+        /// </summary>
+        public static HtmlDocument GettingRegionsFromAWebsite()
         {
-            string url = "https://world-weather.ru/pogoda/russia";
-            HtmlDocument HD = new HtmlDocument();
-
-
-            BrowserCreationAndEncoding();
-            HD = web.Load(url);
-
-
-            RequestingXPathData(HD);
-            HtmlNode HN;
-
-            if (NoAltElements != null)
-
-                for (int i = 0; i < NoAltElements.Count; i++)
-                {
-                    HN = NoAltElements[i];
-                    string outputText = HN.InnerText;
-                    Console.WriteLine($"{i}){outputText}\n");
-                }
-            return NoAltElements;
-
+            string UrlNation = "https://world-weather.ru/pogoda/russia";
+            HtmlWeb web = BrowserCreationAndEncoding.FuncBrowserCreationAndEncoding();
+            HtmlDocument HD = web.Load(UrlNation);
+            return HD;
         }
-
-        public static HtmlNodeCollection RequestingXPathData(HtmlDocument HD)
+        /// <summary>
+        /// Получение городов с сайта
+        /// </summary>
+        public static void GettingCitiesFromAWebsite(HtmlNodeCollection NoAltElements)
         {
-            HtmlNodeCollection NoAltElements = HD.DocumentNode.SelectNodes("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div/ul/li/a");
-            return NoAltElements;
+            Console.WriteLine("Выберите регион");
+            int IndexRegion = int.Parse(Console.ReadLine());
+            HtmlNode HN = NoAltElements[IndexRegion];
+            string UrlRegions = HN.Attributes["href"].Value;
+            HtmlWeb web = BrowserCreationAndEncoding.FuncBrowserCreationAndEncoding();
+            HtmlDocument HD = web.Load(UrlRegions);
         }
-
-        public static HtmlWeb BrowserCreationAndEncoding()
+        /// <summary>
+        /// Получение погоды с сайта
+        /// </summary>
+        public static void GettingWeatherFromAWebsite(HtmlNodeCollection NoAltElements)
         {
-            var web = new HtmlWeb
-            {
-                AutoDetectEncoding = false,
-                OverrideEncoding = Encoding.UTF8,
-            };
-            return web;
+            Console.WriteLine("Выберите город");
+            int IndexCity = int.Parse(Console.ReadLine());
+            HtmlNode HN = NoAltElements[IndexCity];
+            string UrlCities = "http:" + HN.Attributes["href"].Value;
+            HtmlWeb web = BrowserCreationAndEncoding.FuncBrowserCreationAndEncoding();
+            HtmlDocument HD = web.Load(UrlCities);
         }
-
     }
 }
