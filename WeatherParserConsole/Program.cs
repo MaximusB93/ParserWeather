@@ -10,15 +10,13 @@ namespace WeatherParserConsole
 {
     internal class Program
     {
-        public static void Main(string[] args)
+
+
+        public static void Main()
         {
-            
-            Sait.FuncSait();
-            HtmlNodeCollection NoAltElements = Sait.FuncSait();
-            //Region.FuncRegion(NoAltElements);
+            HtmlNodeCollection NoAltElements = GettingHTMLFromAWebsite.FuncSait(NoAltElements);
             HtmlNodeCollection NoAltElements2 = Region.FuncRegion(NoAltElements);
             Gorod.FuncGorod(NoAltElements2);
-
         }
     }
 }
