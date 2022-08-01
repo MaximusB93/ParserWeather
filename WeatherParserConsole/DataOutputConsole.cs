@@ -10,17 +10,17 @@ namespace WeatherParserConsole
 {
     internal class DataOutputConsole
     {
-        public static HtmlNodeCollection DataRegionsAnd—itiesConsole(HtmlNodeCollection NoAltElements)
+        public static HtmlNodeCollection DataRegionsAnd—itiesConsole(HtmlNodeCollection htmlNodes)
         {
-            if (NoAltElements != null)
+            if (htmlNodes != null)
 
-                for (int i = 0; i < NoAltElements.Count; i++)
+                for (int i = 0; i < htmlNodes.Count; i++)
                 {
-                    HtmlNode HN = NoAltElements[i];
+                    HtmlNode HN = htmlNodes[i];
                     string outputText = HN.InnerText;
                     Console.WriteLine($"{i}){outputText}\n");
                 }
-            return NoAltElements;
+            return htmlNodes;
         }
 
         public static void DataWeatherConsole(HtmlDocument HD, HtmlNodeCollection NoAltElements, HtmlNodeCollection NoAltElements2)

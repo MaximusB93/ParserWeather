@@ -49,9 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BrowserCreationAndEncoding.cs" />
     <Compile Include="DataOutputConsole.cs" />
-    <Compile Include="RequestingXPathData.cs" />
     <Compile Include="GettingHTMLFromAWebsite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

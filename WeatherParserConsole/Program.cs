@@ -13,20 +13,9 @@ namespace WeatherParserConsole
 
         public static void Main()
         {
-            GettingHTMLFromAWebsite.GettingRegionsFromAWebsite();
+            GettingHTMLFromAWebsite.FuncBrowserCreationAndEncoding();
+            GettingHTMLFromAWebsite.StartParsing();
 
-
-            //RequestingXPathData.RequestingXPathRegions(GettingHTMLFromAWebsite.GettingRegionsFromAWebsite());
-
-
-            DataOutputConsole.DataRegionsAnd—itiesConsole(RequestingXPathData.RequestingXPathRegions(GettingHTMLFromAWebsite.GettingRegionsFromAWebsite()));
-
-
-
-            /*HtmlNodeCollection NoAltElements2 = */
-            GettingHTMLFromAWebsite.GettingCitiesFromAWebsite(DataOutputConsole.DataRegionsAnd—itiesConsole());
-            DataOutputConsole.DataRegionsAnd—itiesConsole(RequestingXPathData.RequestingXPathCities(GettingHTMLFromAWebsite.GettingCitiesFromAWebsite()));
-            //GettingHTMLFromAWebsite.GettingWeatherFromAWebsite(NoAltElements2);
         }
     }
 }
