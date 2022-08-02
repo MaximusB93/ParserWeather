@@ -61,8 +61,10 @@ namespace WeatherParserConsole
         public static void StartParsing()
         {
             string UrlNation = "https://world-weather.ru/pogoda/russia";
+            HtmlWeb web = new HtmlWeb();
             HtmlDocument HD = web.Load(UrlNation);
             regions = HD.DocumentNode.SelectNodes("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div/ul/li/a");
+            DataOutputConsole.DataRegionsAndÑitiesConsole(regions);
             Console.WriteLine("Âûáåğèòå ğåãèîí");
             int IndexRegion = int.Parse(Console.ReadLine());
             HtmlNode HN = regions[IndexRegion];

@@ -13,7 +13,7 @@ namespace WeatherParserConsole
 
         public static void Main()
         {
-            GettingHTMLFromAWebsite.FuncBrowserCreationAndEncoding();
+            //GettingHTMLFromAWebsite.FuncBrowserCreationAndEncoding();
             GettingHTMLFromAWebsite.StartParsing();
 
         }
