@@ -50,13 +50,15 @@ namespace WeatherParserConsole
                 OverrideEncoding = Encoding.UTF8,
             };
         }
-        private static void ParsingFromWebsite(HtmlNodeCollection htmlNodes, string Url, string XPath, int Index)
+        private static HtmlNodeCollection ParsingFromWebsite(HtmlNodeCollection htmlNodes, string Url, string XPath, int Index)
         {
             HtmlNode HN = htmlNodes[Index];
+            HtmlWeb web = new HtmlWeb();
             HtmlDocument HD = web.Load(Url);
             htmlNodes = HD.DocumentNode.SelectNodes(XPath);
             //return htmlNodes;
             DataOutputConsole.DataRegionsAndÑitiesConsole(htmlNodes);
+            return htmlNodes;
         }
         public static void StartParsing()
         {
@@ -68,16 +70,15 @@ namespace WeatherParserConsole
             Console.WriteLine("Âûáåðèòå ðåãèîí");
             int IndexRegion = int.Parse(Console.ReadLine());
             HtmlNode HN = regions[IndexRegion];
-            ParsingFromWebsite(regions, HN.Attributes["href"].Value, "/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/div/ul/li/a", IndexRegion);
-            //HtmlNodeCollection htmlNodes = DataOutputConsole.DataRegionsAndÑitiesConsole();
-
-            //Console.WriteLine("Âûáåðèòå ãîðîä");
-            //int IndexCity = int.Parse(Console.ReadLine());
-            //HN = cities[IndexCity];
-            //string UrlCities = "http:" + HN.Attributes["href"].Value;
-            //HD = web.Load(UrlCities);
-            //HtmlNodeCollection DescrType = HD.DocumentNode.SelectNodes("/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/dl/dt");
-            //HtmlNodeCollection DescrValue = HD.DocumentNode.SelectNodes("/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/dl/dd");
+            cities = ParsingFromWebsite(regions, HN.Attributes["href"].Value, "/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/div/ul/li/a", IndexRegion);
+            Console.WriteLine("Âûáåðèòå ãîðîä");
+            int IndexCity = int.Parse(Console.ReadLine());
+            HN = cities[IndexCity];
+            string UrlCities = "http:" + HN.Attributes["href"].Value;
+            HD = web.Load(UrlCities);
+            HtmlNodeCollection DescrType = HD.DocumentNode.SelectNodes("/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/dl/dt");
+            HtmlNodeCollection DescrValue = HD.DocumentNode.SelectNodes("/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/dl/dd");
+            DataOutputConsole.DataWeatherConsole(DescrType, DescrValue);
         }
     }
 }

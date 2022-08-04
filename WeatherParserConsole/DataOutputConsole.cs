@@ -23,14 +23,14 @@ namespace WeatherParserConsole
             return htmlNodes;
         }
 
-        public static void DataWeatherConsole(HtmlDocument HD, HtmlNodeCollection NoAltElements, HtmlNodeCollection NoAltElements2)
+        public static void DataWeatherConsole(HtmlNodeCollection DescrType, HtmlNodeCollection DescrValue)
         {
-            if (NoAltElements != null & NoAltElements2 != null)
+            if (DescrType != null & DescrValue != null)
 
-                for (int i = 0; i < NoAltElements.Count; i++)
+                for (int i = 0; i < DescrType.Count; i++)
                 {
-                    HtmlNode HN = NoAltElements[i];
-                    HtmlNode HN2 = NoAltElements2[i];
+                    HtmlNode HN = DescrType[i];
+                    HtmlNode HN2 = DescrValue[i];
                     string outputText = HN.InnerText;
                     string outputText2 = HN2.InnerText;
                     Console.WriteLine($"{outputText}\t {outputText2}\n");
