@@ -6,13 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 
-namespace WeatherParserConsole
+namespace ParserWeather
 {
     internal class DataOutputConsole
     {
         public static HtmlNodeCollection DataRegionsAnd—itiesConsole(HtmlNodeCollection htmlNodes)
         {
             if (htmlNodes != null)
+
                 for (int i = 0; i < htmlNodes.Count; i++)
                 {
                     HtmlNode HN = htmlNodes[i];
@@ -21,9 +22,11 @@ namespace WeatherParserConsole
                 }
             return htmlNodes;
         }
+
         public static void DataWeatherConsole(HtmlNodeCollection DescrType, HtmlNodeCollection DescrValue)
         {
             if (DescrType != null & DescrValue != null)
+
                 for (int i = 0; i < DescrType.Count; i++)
                 {
                     HtmlNode HN = DescrType[i];

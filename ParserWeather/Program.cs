@@ -18,6 +18,8 @@ namespace ParserWeather
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormParser());
+            GettingHTMLFromAWebsite.StartParsing();
+
         }
     }
 }

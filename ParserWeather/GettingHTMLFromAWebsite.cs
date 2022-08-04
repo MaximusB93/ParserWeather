@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 
-namespace WeatherParserConsole
+namespace ParserWeather
 {
     internal class GettingHTMLFromAWebsite
     {

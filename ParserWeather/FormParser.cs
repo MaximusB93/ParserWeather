@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HtmlAgilityPack;
 
 namespace ParserWeather
 {
@@ -15,6 +16,11 @@ namespace ParserWeather
         public FormParser()
         {
             InitializeComponent();
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e, HtmlNodeCollection htmlNodes)
+        {
+            //listBox1.Items.Add(DataOutputConsole.DataRegionsAndСitiesConsole(htmlNodes));
         }
     }
 }
