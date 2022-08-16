@@ -29,18 +29,29 @@ namespace WeatherParserConsole
             HtmlDocument HD = web.Load(UrlNation);
             regions = HD.DocumentNode.SelectNodes("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div/ul/li/a");
             DataOutputConsole.DataRegionsAndСitiesConsole(regions);
-            Console.WriteLine("Выберите регион");
-            int IndexRegion = int.Parse(Console.ReadLine());
-            HtmlNode HN = regions[IndexRegion];
-            cities = ParsingFromWebsite(regions, HN.Attributes["href"].Value, "/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/div/ul/li/a", IndexRegion);
-            Console.WriteLine("Выберите город");
-            int IndexCity = int.Parse(Console.ReadLine());
-            HN = cities[IndexCity];
-            string UrlCities = "http:" + HN.Attributes["href"].Value;
-            HD = web.Load(UrlCities);
-            HtmlNodeCollection DescrType = HD.DocumentNode.SelectNodes("/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/dl/dt");
-            HtmlNodeCollection DescrValue = HD.DocumentNode.SelectNodes("/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/dl/dd");
-            DataOutputConsole.DataWeatherConsole(DescrType, DescrValue);
+            Console.WriteLine("Выберите регион");           
+            try
+            {
+                int IndexRegion = int.Parse(Console.ReadLine());
+                HtmlNode HN = regions[IndexRegion];
+                cities = ParsingFromWebsite(regions, HN.Attributes["href"].Value, "/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/div/ul/li/a", IndexRegion);
+                Console.WriteLine("Выберите город");
+
+
+                int IndexCity = int.Parse(Console.ReadLine());
+                HN = cities[IndexCity];
+                string UrlCities = "http:" + HN.Attributes["href"].Value;
+                HD = web.Load(UrlCities);
+                HtmlNodeCollection DescrType = HD.DocumentNode.SelectNodes("/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/dl/dt");
+                HtmlNodeCollection DescrValue = HD.DocumentNode.SelectNodes("/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/dl/dd");
+                DataOutputConsole.DataWeatherConsole(DescrType, DescrValue);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Такого значения нет, попробуйте снова");
+
+            }
+           
         }
         private static HtmlNodeCollection ParsingFromWebsite(HtmlNodeCollection htmlNodes, string Url, string XPath, int Index)
         {
